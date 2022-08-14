@@ -20,8 +20,33 @@ A pivot table was created based on the enhanced Kickstarted data, with filters f
 
 At this point the data for the analysis was displayed in tabular form, but to enable more visually intuitive understanding of the data, a line chart was created:
 
+![Theater Outcomes based on Launch Date](Resources/Theater_Outcomes_vs_Launch.png)
 
 ### Analysis of Outcomes Based on Goals
+
+A second analysis of campaign outcomes was prepared to better understand the success and failure of fundraising campaigns for plays based on the size of the fundraising goal. In this analysis we were specifically interested in understanding the number and percentage of successful, failed, or canceled campaigns by the below goal ranges:
+
+* Less than 1000
+* 1000 to 4999
+* 5000 to 9999
+* 10000 to 14999
+* 15000 to 19999
+* 20000 to 24999
+* 25000 to 29999
+* 30000 to 34999
+* 35000 to 39999
+* 40000 to 44999
+* 45000 to 49999
+* 50000 or More
+
+The number of successful, failed, or canceled campaigns for this analysis was compiled by writing 'sumifs' formulas against the original Kickstarter data set.
+For example, the calculation for the number of failed campaigns with a goal of raising between $10,000 to $14,999 is: `=COUNTIFS(Kickstarter!$F:$F,"failed",Kickstarter!$D:$D,">=10000",Kickstarter!$D:$D,"<14999.99",Kickstarter!$R:$R,"plays")`.
+
+With the counts in hand, a simple summation formula was added to the table of data total all successful, failed and canceled campaigns: `=SUM(B2:D2)` and percentages were calculated based on the count of successful, failed or canceled campaigns divided by the total campaigns: `=IFERROR(B2/E2,0)`.
+
+A line chart to display the tabular data provides for a more intuitive understanding:
+
+![Theater Outcomes based on Launch Date](Resources/Outcomes_vs_Goals.png)
 
 ### Challenges and Difficulties Encountered
 
