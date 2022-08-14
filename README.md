@@ -20,7 +20,7 @@ A pivot table was created based on the enhanced Kickstarted data, with filters f
 
 At this point the data for the analysis was displayed in tabular form, but to enable more visually intuitive understanding of the data, a line chart was created:
 
-![Theater Outcomes based on Launch Date](Resources/Theater_Outcomes_vs_Launch.png)
+**ADD IMAGE**
 
 ### Analysis of Outcomes Based on Goals
 
@@ -49,6 +49,16 @@ A line chart to display the tabular data provides for a more intuitive understan
 ![Theater Outcomes based on Launch Date](Resources/Outcomes_vs_Goals.png)
 
 ### Challenges and Difficulties Encountered
+
+In preparing the above two analyses, several small challenges were encountered:
+
+- When preparing the pivot table analysis of Theater Outcomes by Launch date, upon adding 'Date Created Conversion' to the pivot table rows, additional calculated date fields were also added to the pivot table.  While unexpected, it was easy to simply drag the new fields for 'Years2' and 'Quarters' back to the field list.  The fact that these fields were added automatically indicated to me that it was unnecessary for us to have added the calculated column for 'Years' earlier in our data preparation.  However, the field could be useful for other analyses not based on a pivot table.
+
+- Preparation of the tabular data for 'Outcomes based on Goals' was not difficult for me.  I have experience using sumifs formulas and was familiar with the syntax and understood the desired outcome.  My experience has also taught me that it is important to cross-check the results you are getting from a formula like sumifs to ensure that the formula is giving the expected results.  I completed my cross check as follows:
+  - After writing all formulas to calculate the number of successful campaigns for each goal range, I added a total for all successful campaigns.  At that time, my total was 693 campaigns.  
+  - Earlier in our homework, we created a 'Subcategory Statistics' report which showed the total number of successful (or failed, canceled or live) campaigns for any selected subcategory.  This report showed that the total successful campaigns was 694.  I was missing one campaign.
+ - I reviewed my formulas again, looking for an error that could explain the missing campaign and noticed that I had assumed that all campaigns would be in whole dollar values!  I changed my formula from `=COUNTIFS(Kickstarter!$F:$F,"successful",Kickstarter!$D:$D,">=1000",Kickstarter!$D:$D,"<4999",Kickstarter!$R:$R,"plays")` to `=COUNTIFS(Kickstarter!$F:$F,"successful",Kickstarter!$D:$D,">=1000",Kickstarter!$D:$D,"<4999.99",Kickstarter!$R:$R,"plays")` which provided the expected data.
+ - I completed the table for failed and canceled campaigns applying similar formula logic and again validated all totals, which were accurate.
 
 ## Results
 
