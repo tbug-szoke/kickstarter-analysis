@@ -20,7 +20,7 @@ A pivot table was created based on the enhanced Kickstarted data, with filters f
 
 At this point the data for the analysis was displayed in tabular form, but to enable more visually intuitive understanding of the data, a line chart was created:
 
-**ADD IMAGE**
+![Theater Outcomes by Launch Date](Resources/Theater_Outcomes_vs_Launch.png)
 
 ### Analysis of Outcomes Based on Goals
 
