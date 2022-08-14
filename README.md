@@ -50,22 +50,39 @@ A line chart to display the tabular data provides for a more intuitive understan
 
 ### Challenges and Difficulties Encountered
 
-In preparing the above two analyses, several small challenges were encountered:
+In preparing the above two analyses, a couple of small challenges were encountered:
 
 - When preparing the pivot table analysis of Theater Outcomes by Launch date, upon adding 'Date Created Conversion' to the pivot table rows, additional calculated date fields were also added to the pivot table.  While unexpected, it was easy to simply drag the new fields for 'Years2' and 'Quarters' back to the field list.  The fact that these fields were added automatically indicated to me that it was unnecessary for us to have added the calculated column for 'Years' earlier in our data preparation.  However, the field could be useful for other analyses not based on a pivot table.
 
 - Preparation of the tabular data for 'Outcomes based on Goals' was not difficult for me.  I have experience using sumifs formulas and was familiar with the syntax and understood the desired outcome.  My experience has also taught me that it is important to cross-check the results you are getting from a formula like sumifs to ensure that the formula is giving the expected results.  I completed my cross check as follows:
   - After writing all formulas to calculate the number of successful campaigns for each goal range, I added a total for all successful campaigns.  At that time, my total was 693 campaigns.  
   - Earlier in our homework, we created a 'Subcategory Statistics' report which showed the total number of successful (or failed, canceled or live) campaigns for any selected subcategory.  This report showed that the total successful campaigns was 694.  I was missing one campaign.
- - I reviewed my formulas again, looking for an error that could explain the missing campaign and noticed that I had assumed that all campaigns would be in whole dollar values!  I changed my formula from `=COUNTIFS(Kickstarter!$F:$F,"successful",Kickstarter!$D:$D,">=1000",Kickstarter!$D:$D,"<4999",Kickstarter!$R:$R,"plays")` to `=COUNTIFS(Kickstarter!$F:$F,"successful",Kickstarter!$D:$D,">=1000",Kickstarter!$D:$D,"<4999.99",Kickstarter!$R:$R,"plays")` which provided the expected data.
- - I completed the table for failed and canceled campaigns applying similar formula logic and again validated all totals, which were accurate.
+  - I reviewed my formulas again, looking for an error that could explain the missing campaign and noticed that I had assumed that all campaigns would be in whole dollar values!  I changed my formula from `=COUNTIFS(Kickstarter!$F:$F,"successful",Kickstarter!$D:$D,">=1000",Kickstarter!$D:$D,"<4999",Kickstarter!$R:$R,"plays")` to `=COUNTIFS(Kickstarter!$F:$F,"successful",Kickstarter!$D:$D,">=1000",Kickstarter!$D:$D,"<4999.99",Kickstarter!$R:$R,"plays")` which provided the expected data.
+  - I completed the table for failed and canceled campaigns applying similar formula logic and again validated all totals, which were accurate.
 
 ## Results
 
-- What are two conclusions you can draw about the Outcomes based on Launch Date?
+### What are two conclusions you can draw about the Outcomes based on Launch Date?
 
-- What can you conclude about the Outcomes based on Goals?
+We can draw the following conclusions about Outcomes based on Launch Date:
+1. The month of May has the most successful campaigns, and while it also has the most failed campaigns, there are proportionally more successes in that month, as evidenced both by the peak on the 'successful' line in the month of May and the spread between the 'successful' and 'failed' lines in the month of May.
 
-- What are some limitations of this dataset?
+2. The months of November and December have fewer campaigns and proportionally higher failure rates, with December having nearly equal numbers of failed as successful campaigns, as evidenced by both the lower values plotted and the narrowing spread between the 'successful' and 'failed' lines.
 
-- What are some other possible tables and/or graphs that we could create?
+### What can you conclude about the Outcomes based on Goals?
+
+We can conclude that smaller fundraising goals are generally more successful than larger goals.  The 'Less than 1000' goals had the highest success rate at clost to 80% and the second highest success rate was delivered for goals between '1000 to 4999'.  The success rate generally trended downward for higher goals, except for goals between 35000 to 44999, which again had a higher success than failure rate.  Some additional analysis would need to be done on this segment of the data to understand if there were some unusual items driving this off trend result.
+ 
+### What are some limitations of this dataset?
+
+The dataset we are working with does not have many qualitative data points that might be useful to Louise as she attempts to develop her own successful campaign.  She may need to take some of the insights we can provide, e.g. most successful campaigns have smaller goals and launch in May, and then go to the kickstarter site to compare successful and unsuccessful small goals launched in May to look for other qualitative attributes, such as whether the project story includes compelling details, images and/or links to help determine what else may contribute to success.
+
+### What are some other possible tables and/or graphs that we could create?
+
+Even with the data that we do have available, it may be helpful to create some additional tables to better understand successful campaigns:
+
+- We could modify the Theater Outcomes by Launch date and instead focus just on Plays to determine if the same launch date patters apply.
+
+- We could add to the Outcomes based on Goals analysis to also determine the average contribution for successful vs failed campaigns.
+
+- We might also want to calculate some statistical measures, e.g. a Box and Whiskers plot, on the average donations for successful campaigns, so that we know if there is a 'sweet spot' average donation amount regardless of goal size. We could compare the failed campaign average donations to see if they do fall in out outlier range of successful campaigns. If so, that would indicate that predicting the numbers of sponsors that Louise can attract will be an important factor in establishing a good campaign goal, where the average donation would be within the likely range.
